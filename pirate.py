@@ -2,6 +2,7 @@
 """This project creates pirate drinks based on user input and preferences"""
 
 import random
+import sys
 
 questions = {
     "strong": "Do ye like yer drinks strong?",
@@ -62,15 +63,22 @@ def name_drink(nouns,adj):
     return(drink_name)
     
 ###  Program starts here
+demo= None
 
 if __name__ == '__main__':
-    my_answers =  {'salty': True, 'strong': False, 'bitter': True, 'fruity': False, 'sweet': True} 
-    
-    print_drink(make_drink(my_answers))
-    
-else:
-    get_answers(questions)
-    make_drink(answers)
-    print_drink(my_drink)
+
+    try:
+        demo = sys.argv[1]  
+    except:
+        pass
+
+    if demo == 'demo':
+        my_answers =  {'salty': True, 'strong': False, 'bitter': True, 'fruity': False, 'sweet': True} 
+        print_drink(make_drink(my_answers))
+    else:
+        get_answers(questions)
+        make_drink(answers)
+        print_drink(make_drink(answers))
+
             
         
